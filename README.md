@@ -1,5 +1,6 @@
 # 技术栈
 
+- 包管理器：pnpm
 - 构建工具：Vite
 - 框架：React、TS
 - 样式：TailwindCSS
