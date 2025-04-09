@@ -6,7 +6,7 @@ interface IconProps extends React.HTMLAttributes<SVGElement> {
   color?: string;
 }
 
-const Icon: React.FC<IconProps> = ({
+const SVGIcon: React.FC<IconProps> = ({
   name,
   size = 24,
   color = "currentColor",
@@ -35,4 +35,4 @@ const Icon: React.FC<IconProps> = ({
   return <SvgIcon width={size} height={size} fill={color} />;
 };
 
-export default Icon;
+export default SVGIcon;
