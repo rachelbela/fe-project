@@ -22,7 +22,7 @@ export function LoginForm({
   const handleLogin = () => {
     if (!email || !psw) return;
     localStorage.setItem("token", email);
-    navigate("/dashboard", { replace: true });
+    navigate("/workbench", { replace: true });
   };
 
   return (
