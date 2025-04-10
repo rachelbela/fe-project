@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { RoleTypeMap } from "@/config/role";
+import { useUserInfoStore } from "@/store/userInfoSlice";
 
 export function LoginForm({
   className,
@@ -19,10 +21,22 @@ export function LoginForm({
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
-  const handleLogin = () => {
+  const { setUserInfo } = useUserInfoStore();
+  const handleLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     if (!email || !psw) return;
-    localStorage.setItem("token", email);
-    navigate("/workbench", { replace: true });
+    const token = `token_${Date.now()}`;
+    const userInfo = {
+      username: "Vben",
+      email,
+      avatar:
+        "https://unpkg.com/@vbenjs/static-source@0.1.7/source/avatar-v1.webp",
+      token: token,
+      role: RoleTypeMap.MANAGER,
+    };
+    setUserInfo(userInfo);
+    localStorage.setItem(token, JSON.stringify(userInfo));
+    navigate("/workbench");
   };
 
   return (
@@ -67,7 +81,13 @@ export function LoginForm({
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full" onClick={handleLogin}>
+                <Button
+                  type="submit"
+                  className="w-full"
+                  onClick={(e) => {
+                    handleLogin(e);
+                  }}
+                >
                   Login
                 </Button>
                 <Button variant="outline" className="w-full">

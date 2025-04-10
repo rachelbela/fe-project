@@ -6,14 +6,19 @@ import { Outlet, useNavigate } from "react-router";
 import { useEffect, useRef } from "react";
 import { createTabDataStore } from "@/store/tabDataSlice";
 import { TabDataContext } from "./tabBarContext";
+import { useUserInfoStore } from "@/store/userInfoSlice";
 
 export default function Page() {
   const tabData = JSON.parse(sessionStorage.getItem("tabData")!)?.state;
   const store = useRef(createTabDataStore(tabData)).current;
+  const { userInfo } = useUserInfoStore();
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/workbench");
-  }, []);
+    if (!userInfo?.token) {
+      navigate("/login");
+    }
+  }, [userInfo]);
+
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />

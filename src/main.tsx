@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Admin />}>
-          <Route index element={<Workbench />}></Route>
+          {/* <Route index element={<Workbench />}></Route> */}
           <Route path="talkLibrary" element={<TalkLibrary />}></Route>
           <Route path="peopleManagement" element={<PeopleManagement />}></Route>
           <Route path="customerChat" element={<CustomerChat />}></Route>
