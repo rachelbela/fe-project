@@ -8,6 +8,8 @@ import Workbench from "./app/workbench/index.tsx";
 import TalkLibrary from "./app/talkLibrary/index.tsx";
 import PeopleManagement from "./app/peopleManagement/index.tsx";
 import CustomerChat from "./app/customerChat/index.tsx";
+import "./wasmTypes.d.ts";
+import "./wasm_exec.js";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

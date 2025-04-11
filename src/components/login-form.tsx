@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { RoleTypeMap } from "@/config/role";
+import { AesEncryptGCM } from "@/lib/aes";
 
 export function LoginForm({
   className,
@@ -24,16 +25,19 @@ export function LoginForm({
     e.preventDefault();
     if (!email || !psw) return;
     const token = `token_${Date.now()}`;
-    const userInfo = {
-      username: "Vben",
-      email,
-      avatar:
-        "https://unpkg.com/@vbenjs/static-source@0.1.7/source/avatar-v1.webp",
-      token: token,
-      role: RoleTypeMap.MANAGER,
-    };
-    localStorage.setItem(token, JSON.stringify(userInfo));
-    navigate({ pathname: "/workbench", search: `?t=${token}` });
+    AesEncryptGCM(token).then((res) => {
+      console.log("加密后的结果", res);
+      const userInfo = {
+        username: "Vben",
+        email,
+        avatar:
+          "https://unpkg.com/@vbenjs/static-source@0.1.7/source/avatar-v1.webp",
+        token: res,
+        role: RoleTypeMap.MANAGER,
+      };
+      localStorage.setItem(token, JSON.stringify(userInfo));
+      navigate({ pathname: "/workbench", search: `?t=${token}` });
+    });
   };
 
   return (
