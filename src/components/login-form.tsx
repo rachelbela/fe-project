@@ -12,7 +12,6 @@ import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { RoleTypeMap } from "@/config/role";
-import { useUserInfoStore } from "@/store/userInfoSlice";
 
 export function LoginForm({
   className,
@@ -21,7 +20,6 @@ export function LoginForm({
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
-  const { setUserInfo } = useUserInfoStore();
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     if (!email || !psw) return;
@@ -34,9 +32,8 @@ export function LoginForm({
       token: token,
       role: RoleTypeMap.MANAGER,
     };
-    setUserInfo(userInfo);
     localStorage.setItem(token, JSON.stringify(userInfo));
-    navigate("/workbench");
+    navigate({ pathname: "/workbench", search: `?t=${token}` });
   };
 
   return (

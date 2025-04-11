@@ -65,7 +65,12 @@ export function NavMain({
                       } rounded-md`}
                     >
                       <SidebarMenuSubButton asChild>
-                        <Link to={subItem.url} state={{ title: subItem.title }}>
+                        <Link
+                          to={{
+                            pathname: subItem.url,
+                            search: location.search,
+                          }}
+                        >
                           <span>{subItem.title}</span>
                         </Link>
                       </SidebarMenuSubButton>

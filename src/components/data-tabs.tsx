@@ -28,7 +28,7 @@ function DataTabs() {
   };
 
   const handleClick = (pathname: string) => {
-    navigate(pathname);
+    navigate({ pathname, search: location.search });
   };
 
   return (
