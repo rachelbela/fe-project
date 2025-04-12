@@ -34,7 +34,7 @@ export default function Page() {
         <TabDataContext.Provider value={store}>
           <DataTabs />
         </TabDataContext.Provider>
-        <div className="bg-[#F5F6F7]">
+        <div className="bg-[var(--tabbar-foreground)]">
           <Outlet />
         </div>
       </SidebarInset>

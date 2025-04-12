@@ -61,7 +61,9 @@ export function NavMain({
                     <SidebarMenuSubItem
                       key={subItem.title}
                       className={`${
-                        location.pathname === subItem.url ? "bg-[#F4F4F5]" : ""
+                        location.pathname === subItem.url
+                          ? "bg-[var(foreground)]"
+                          : ""
                       } rounded-md`}
                     >
                       <SidebarMenuSubButton asChild>

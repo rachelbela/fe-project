@@ -32,34 +32,36 @@ function DataTabs() {
   };
 
   return (
-    <div className="flex overflow-hidden">
-      {tabs.map((v) => (
+    <div className="flex overflow-hidden bg-[var(--tabbar-background)]">
+      {tabs.map((v, index) => (
         <div
           key={v.pathname}
           className={`relative px-4 py-3 flex items-center space-x-1 hover:cursor-pointer ${
-            v.pathname === curTab?.pathname ? "bg-[#F5F6F7]" : "bg-white"
+            v.pathname === curTab?.pathname
+              ? "bg-[var(--tabbar-foreground)]"
+              : "bg-[var(--tabbar-background)]"
           }`}
           onClick={() => {
             console.log("buhuo");
             handleClick(v.pathname);
           }}
         >
-          <span className="text-[#666666] text-xs mr-2">{v.name}</span>
+          <span className="text-foreground text-xs mr-2">{v.name}</span>
           {tabs.length > 1 && (
             <div onClick={(e) => handleDelete(e, v.pathname)}>
               <SVGIcon name="delete" size={12} />
             </div>
           )}
-          {v.pathname !== curTab?.pathname && (
+          {v.pathname !== curTab?.pathname && index !== tabs.length - 1 && (
             <span className="absolute right-[1px] w-[1px] h-4 top-1/2 -translate-y-[50%] bg-[#ebebeb]"></span>
           )}
           {v.pathname === curTab?.pathname && (
             <>
-              <div className="bg-[#F5F6F7] w-2 h-10 absolute left-[-8px] bottom-0">
-                <span className="absolute top-0 left-0 bg-white w-2 h-10 rounded-br-xl"></span>
+              <div className="bg-[var(--tabbar-foreground)] w-2 h-10 absolute left-[-8px] bottom-0">
+                <span className="absolute top-0 left-0 bg-[var(--tabbar-background)] w-2 h-10 rounded-br-xl"></span>
               </div>
-              <div className="bg-[#F5F6F7] w-2 h-10 absolute right-[-8px] bottom-0 z-100">
-                <span className="absolute top-0 left-0 w-2 h-10 bg-white rounded-bl-xl"></span>
+              <div className="bg-[var(--tabbar-foreground)] w-2 h-10 absolute right-[-8px] bottom-0 z-100">
+                <span className="absolute top-0 left-0 w-2 h-10 bg-[var(--tabbar-background)] rounded-bl-xl"></span>
               </div>
             </>
           )}
