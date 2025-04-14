@@ -10,6 +10,8 @@ import PeopleManagement from "./app/peopleManagement/index.tsx";
 import CustomerChat from "./app/customerChat/index.tsx";
 import "./wasmTypes.d.ts";
 import "./wasm_exec.js";
+import ChatHistory from "./app/chatHistory/page.tsx";
+import List from "./app/list/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -21,6 +23,8 @@ createRoot(document.getElementById("root")!).render(
           <Route path="peopleManagement" element={<PeopleManagement />}></Route>
           <Route path="customerChat" element={<CustomerChat />}></Route>
           <Route path="workbench" element={<Workbench />}></Route>
+          <Route path="virtualList" element={<ChatHistory />} />
+          <Route path="list" element={<List />} />
         </Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>

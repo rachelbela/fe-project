@@ -71,6 +71,10 @@ const data = {
           title: "工作台",
           url: "/workbench",
         },
+        {
+          title: "虚拟列表",
+          url: "/list",
+        },
       ],
     },
     {
