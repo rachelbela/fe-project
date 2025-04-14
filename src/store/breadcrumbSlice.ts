@@ -4,7 +4,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 interface Breadcrumb {
   name: string;
-  url: string;
+  link: string;
 }
 
 interface State {
@@ -12,7 +12,7 @@ interface State {
 }
 
 interface Action {
-  activateBreacrumb: (pathname: string) => void;
+  activateBreacrumb: (breadcrumbData: Breadcrumb[]) => void;
 }
 
 export type BreadcrumbDataStore = ReturnType<typeof createBreadcrumbDataStore>;
@@ -25,7 +25,9 @@ export const createBreadcrumbDataStore = (initProps?: Partial<State>) => {
       (set) => ({
         ...DEFAULT_PROPS,
         ...initProps,
-        activateBreacrumb: (pathname: string) => {},
+        activateBreacrumb: (breadcrumbData: Breadcrumb[]) => {
+          set({ breadcrumbData });
+        },
       }),
       {
         name: "breadcrumbData",

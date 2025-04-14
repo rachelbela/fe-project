@@ -72,7 +72,7 @@ const data = {
           url: "/workbench",
         },
         {
-          title: "虚拟列表",
+          title: "聊天记录",
           url: "/list",
         },
       ],

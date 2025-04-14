@@ -7,11 +7,19 @@ import { useEffect, useRef } from "react";
 import { createTabDataStore } from "@/store/tabDataSlice";
 import { TabDataContext } from "./tabBarContext";
 import { useUserInfoStore } from "@/store/userInfoSlice";
+import { createBreadcrumbDataStore } from "@/store/breadcrumbSlice";
+import { BreadcrumbDataContext } from "./breadcrumbContext";
 
 export default function Page() {
   const tabData = JSON.parse(sessionStorage.getItem("tabData")!)?.state;
-  const store = useRef(createTabDataStore(tabData)).current;
+  const tabbarStore = useRef(createTabDataStore(tabData)).current;
   const { setUserInfo } = useUserInfoStore();
+  const breadcrumbData = JSON.parse(
+    sessionStorage.getItem("breadcrumbData")!
+  )?.state;
+  const breadcrumbStore = useRef(
+    createBreadcrumbDataStore(breadcrumbData)
+  ).current;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,8 +38,10 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
-        <SiteHeader />
-        <TabDataContext.Provider value={store}>
+        <BreadcrumbDataContext.Provider value={breadcrumbStore}>
+          <SiteHeader />
+        </BreadcrumbDataContext.Provider>
+        <TabDataContext.Provider value={tabbarStore}>
           <DataTabs />
         </TabDataContext.Provider>
         <div className="bg-[var(--tabbar-foreground)]">
