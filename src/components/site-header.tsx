@@ -34,17 +34,20 @@ export function SiteHeader() {
     const data = breadcrumbData[i];
     if (i === breadcrumbData.length - 1) {
       items.push(
-        <BreadcrumbItem>
+        <BreadcrumbItem key={data.link}>
           <BreadcrumbPage>{t(data.name)}</BreadcrumbPage>
         </BreadcrumbItem>
       );
     } else {
       items.push(
         <>
-          <BreadcrumbItem>
+          <BreadcrumbItem key={data.link}>
             <BreadcrumbLink>{t(data.name)}</BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator className="hidden md:block" />
+          <BreadcrumbSeparator
+            key={"separator" + data.link}
+            className="hidden md:block"
+          />
         </>
       );
     }
