@@ -1,45 +1,123 @@
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import { faker } from "@faker-js/faker";
+import UncertainHeightVirtualList, {
+  VariableSizeListRef,
+} from "@/components/uncertain-height-virtual-list";
+
+enum Role {
+  CUSTOMER = "customer",
+  STAFF = "staff",
+}
+
+interface Message {
+  id: number;
+  role: Role;
+  content: string;
+}
+
+function Item({
+  index,
+  data,
+  setHeight,
+}: {
+  index: number;
+  data: Message[];
+  setHeight: (index: number, height: number) => void;
+}) {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const item = data[index];
+
+  useEffect(() => {
+    if (itemRef.current) {
+      // 计算高度
+      setHeight(index, itemRef.current.getBoundingClientRect().height);
+    }
+  }, [index, setHeight]);
+
+  return (
+    <div ref={itemRef} key={index} className={`flex items-center`}>
+      <div
+        className={`${
+          item.role === Role.CUSTOMER
+            ? "bg-blue-100 justify-start"
+            : "bg-green-100 justify-end"
+        } mb-4 rounded-lg p-4 text-sm`}
+      >
+        {item.content}
+      </div>
+    </div>
+  );
+}
 
 function CustomerChat() {
+  const { t } = useTranslation();
   const [value, setValue] = useState<string>("");
-  const [lang, setLang] = useState("zh");
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
+  const [list, setList] = useState<Message[]>(
+    new Array(1000).fill(0).map((_, index) => ({
+      id: index,
+      role: ["customer", "staff"][Math.random() > 0.5 ? 0 : 1] as Role,
+      content: faker.lorem.paragraph(),
+    }))
+  );
+  const listRef = useRef<VariableSizeListRef | null>(null);
 
-  const handleSend = () => {};
+  // 存放高度数组
+  const heightsRef = useRef<{ [key: number]: number }>({});
+  // 预估高度
+  const estimatedItemHeight = 40;
+
+  const setHeight = (index: number, height: number) => {
+    if (heightsRef.current[index] !== height) {
+      heightsRef.current[index] = height;
+      listRef.current?.resetHeight();
+    }
+  };
+
+  const getHeight = (index: number) => {
+    return heightsRef.current[index] ?? estimatedItemHeight;
+  };
+
   return (
-    <div className="flex flex-1 flex-col border w-120 bg-white p-8">
-      <div className="@container/main flex flex-1 flex-col gap-2">
-        <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6"></div>
-        <div style={{ height: "480px" }}></div>
-      </div>
-      <div className="w-10 mb-2 text-sm">
-        <Select value={lang} onValueChange={setLang}>
-          <SelectTrigger className="w-[100px]">
-            <SelectValue placeholder="选择一种语言" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="zh">中文</SelectItem>
-            <SelectItem value="en">English</SelectItem>
-            <SelectItem value="hk">繁体</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="w-[400px] flex space-x-2">
+    <div className="flex flex-1 flex-col border bg-white p-8">
+      <UncertainHeightVirtualList
+        ref={listRef}
+        containerHeight={500}
+        itemCount={list.length}
+        itemData={list}
+        getItemHeight={getHeight}
+      >
+        {({
+          index,
+          style,
+          data,
+        }: {
+          index: number;
+          style: React.CSSProperties;
+          data: Message[];
+        }) => {
+          return (
+            <div
+              className="w-1/3"
+              style={{
+                ...style,
+                right: data[index].role === Role.CUSTOMER ? "auto" : 0,
+                left: data[index].role === Role.CUSTOMER ? 0 : "auto",
+              }}
+            >
+              <Item index={index} data={data} setHeight={setHeight} />
+            </div>
+          );
+        }}
+      </UncertainHeightVirtualList>
+      <div className="mt-8 flex space-x-2">
         <Input type="text" value={value} onChange={handleInput} />
-        <Button>发送</Button>
+        <Button>{t("send")}</Button>
       </div>
     </div>
   );

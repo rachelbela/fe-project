@@ -14,7 +14,7 @@ interface VariableSizeListProps {
   }>;
 }
 
-interface VariableSizeListRef {
+export interface VariableSizeListRef {
   resetHeight: () => void;
 }
 
@@ -72,9 +72,9 @@ const VariableSizeList = forwardRef<VariableSizeListRef, VariableSizeListProps>(
           index={i}
           style={{
             position: "absolute",
-            left: 0,
+            // left: 0,
             top,
-            width: "100%",
+            // width: "100%",
             height,
           }}
           data={itemData}

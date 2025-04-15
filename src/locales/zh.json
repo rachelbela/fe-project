@@ -20,8 +20,9 @@
   "login-with-google": "使用谷歌登录",
   "password": "密码",
   "sign-up": "注册",
-  "korean":"韩语",
-  "english":"英语",
-  "japanese":"日语",
-  "chinese":"中文"
+  "korean": "韩语",
+  "english": "英语",
+  "japanese": "日语",
+  "chinese": "中文",
+  "send": "发送"
 }

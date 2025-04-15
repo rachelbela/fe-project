@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { faker } from "@faker-js/faker";
-import UncertainHeightVirtualList from "@/components/uncertain-height-virtual-list";
+import UncertainHeightVirtualList, {
+  VariableSizeListRef,
+} from "@/components/uncertain-height-virtual-list";
 
 function Item({
   index,
@@ -40,14 +42,18 @@ function List() {
     new Array(1000).fill(0).map(() => faker.lorem.paragraph())
   );
 
+  const listRef = useRef<VariableSizeListRef | null>(null);
+
   // 存放高度数组
   const heightsRef = useRef<{ [key: number]: number }>({});
   // 预估高度
   const estimatedItemHeight = 40;
 
   const setHeight = (index: number, height: number) => {
+    console.log("height==", height);
     if (heightsRef.current[index] !== height) {
       heightsRef.current[index] = height;
+      listRef.current?.resetHeight();
     }
   };
 
@@ -59,6 +65,7 @@ function List() {
     <>
       列表项高度动态 - 虚拟列表实现
       <UncertainHeightVirtualList
+        ref={listRef}
         containerHeight={300}
         itemCount={list.length}
         itemData={list}
