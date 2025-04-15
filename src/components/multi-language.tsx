@@ -5,22 +5,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Icon } from "@iconify/react";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function MultiLanguage() {
   const { i18n, t } = useTranslation();
   const handleToggleLanguage = (value: string) => {
     i18n.changeLanguage(value);
-    localStorage.setItem("lang", value);
   };
 
-  useEffect(() => {
-    const selectedLang = localStorage.getItem("lang");
-    if (selectedLang) {
-      i18n.changeLanguage(selectedLang);
-    }
-  }, []);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>

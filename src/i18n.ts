@@ -16,6 +16,10 @@ i18n
     backend: {
       loadPath: "src/locales/{{lng}}.json",
     },
+    detection: {
+      order: ["localStorage"],
+      caches: ["localStorage"], // cache user language on
+    },
     debug: true,
     fallbackLng: "en",
     interpolation: {
