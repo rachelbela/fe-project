@@ -22,7 +22,7 @@ function DarkModeSwitch() {
     }
   };
   return (
-    <div className="flex-1 flex justify-end items-center">
+    <div className="flex justify-end items-center">
       <Switch
         id="airplane-mode"
         checked={dark}

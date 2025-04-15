@@ -13,11 +13,13 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import { RoleTypeMap } from "@/config/role";
 import { AesEncryptGCM } from "@/lib/aes";
+import { useTranslation } from "react-i18next";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const { t } = useTranslation();
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [psw, setPsw] = useState("");
@@ -44,16 +46,16 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle>{t("login-to-your-account")}</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            {t("enter-your-email-below-to-login-to-your-account")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t("email")}</Label>
                 <Input
                   id="email"
                   type="email"
@@ -65,12 +67,12 @@ export function LoginForm({
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t("password")}</Label>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    Forgot your password?
+                    {t("forgot-your-password")}
                   </a>
                 </div>
                 <Input
@@ -89,17 +91,17 @@ export function LoginForm({
                     handleLogin(e);
                   }}
                 >
-                  Login
+                  {t("login")}
                 </Button>
                 <Button variant="outline" className="w-full">
-                  Login with Google
+                  {t("login-with-google")}
                 </Button>
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+              {t("don-and-apos-t-have-an-account")}{" "}
               <a href="#" className="underline underline-offset-4">
-                Sign up
+                {t("sign-up")}
               </a>
             </div>
           </form>

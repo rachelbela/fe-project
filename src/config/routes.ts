@@ -1,47 +1,47 @@
 export const routesTable = [
   {
-    name: "话术库",
+    name: "talk-library",
     pathname: "/talkLibrary",
     path: [
-      { name: "首页", link: "/" },
-      { name: "客服对接", link: "/" },
-      { name: "话术库", link: "/talkLibrary" },
+      { name: "home", link: "/" },
+      { name: "management", link: "/" },
+      { name: "talk-library", link: "/talkLibrary" },
     ],
   },
   {
-    name: "人员管理",
+    name: "people-management",
     pathname: "/peopleManagement",
     path: [
-      { name: "首页", link: "/" },
-      { name: "客服对接", link: "/" },
-      { name: "人员管理", link: "/peopleManagement" },
+      { name: "home", link: "/" },
+      { name: "management", link: "/" },
+      { name: "people-management", link: "/peopleManagement" },
     ],
   },
   {
-    name: "客户聊天",
+    name: "customer-chat",
     pathname: "/customerChat",
     path: [
-      { name: "首页", link: "/" },
-      { name: "客服对接", link: "/" },
-      { name: "客户聊天", link: "/customerChat" },
+      { name: "home", link: "/" },
+      { name: "management", link: "/" },
+      { name: "customer-chat", link: "/customerChat" },
     ],
   },
   {
-    name: "工作台",
+    name: "workbench",
     pathname: "/workbench",
     path: [
-      { name: "首页", link: "/" },
-      { name: "客服对接", link: "/" },
-      { name: "工作台", link: "/workbench" },
+      { name: "home", link: "/" },
+      { name: "management", link: "/" },
+      { name: "workbench", link: "/workbench" },
     ],
   },
   {
-    name: "聊天记录",
+    name: "chat-history",
     pathname: "/list",
     path: [
-      { name: "首页", link: "/" },
-      { name: "客服对接", link: "/" },
-      { name: "聊天记录", link: "/list" },
+      { name: "home", link: "/" },
+      { name: "management", link: "/" },
+      { name: "chat-history", link: "/list" },
     ],
   },
 ];

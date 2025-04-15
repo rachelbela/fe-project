@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import {
@@ -17,11 +16,16 @@ import { BreadcrumbDataContext } from "@/app/admin/breadcrumbContext";
 import { useStore } from "zustand";
 import { useLocation } from "react-router";
 import { routesTable } from "@/config/routes";
+import MultiLanguage from "./multi-language";
+import { useTranslation } from "react-i18next";
 
 export function SiteHeader() {
+  const { t } = useTranslation();
+
   const { userInfo } = useUserInfoStore();
   const store = useContext(BreadcrumbDataContext);
-  if (!store) throw new Error("Missing BearContext.Provider in the tree");
+  if (!store)
+    throw new Error(t("missing-breadcrumbcontext-provider-in-the-tree"));
   const { breadcrumbData, activateBreacrumb } = useStore(store);
   const location = useLocation();
 
@@ -31,14 +35,14 @@ export function SiteHeader() {
     if (i === breadcrumbData.length - 1) {
       items.push(
         <BreadcrumbItem>
-          <BreadcrumbPage>{data.name}</BreadcrumbPage>
+          <BreadcrumbPage>{t(data.name)}</BreadcrumbPage>
         </BreadcrumbItem>
       );
     } else {
       items.push(
         <>
           <BreadcrumbItem>
-            <BreadcrumbLink>{data.name}</BreadcrumbLink>
+            <BreadcrumbLink>{t(data.name)}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator className="hidden md:block" />
         </>
@@ -49,7 +53,7 @@ export function SiteHeader() {
   useEffect(() => {
     const item = routesTable.find((v) => v.pathname === location.pathname);
     if (!item) {
-      throw Error("路由表中不存在该路径");
+      throw Error(t("can-not-find-the-path-in-routes"));
     } else {
       activateBreacrumb(item.path);
     }
@@ -66,6 +70,9 @@ export function SiteHeader() {
         <Breadcrumb>
           <BreadcrumbList>{items}</BreadcrumbList>
         </Breadcrumb>
+        <div className="flex flex-1 justify-end">
+          <MultiLanguage />
+        </div>
         <DarkModeSwitch />
         {userInfo && (
           <div className="ml-auto flex items-center gap-2">

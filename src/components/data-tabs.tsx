@@ -4,6 +4,7 @@ import SVGIcon from "@/components/ui/svgIcon";
 import { useContext } from "react";
 import { TabDataContext } from "@/app/admin/tabBarContext";
 import { useStore } from "zustand";
+import { useTranslation } from "react-i18next";
 
 function DataTabs() {
   const store = useContext(TabDataContext);
@@ -11,7 +12,7 @@ function DataTabs() {
   const { tabs, activateTab, removeTab, curTab } = useStore(store);
   const location = useLocation();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   useEffect(() => {
     activateTab(location.pathname);
   }, [location]);
@@ -42,11 +43,10 @@ function DataTabs() {
               : "bg-[var(--tabbar-background)]"
           }`}
           onClick={() => {
-            console.log("buhuo");
             handleClick(v.pathname);
           }}
         >
-          <span className="text-foreground text-xs mr-2">{v.name}</span>
+          <span className="text-foreground text-xs mr-2">{t(v.name)}</span>
           {tabs.length > 1 && (
             <div onClick={(e) => handleDelete(e, v.pathname)}>
               <SVGIcon name="delete" size={12} />

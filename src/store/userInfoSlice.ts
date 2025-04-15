@@ -13,6 +13,5 @@ export const useUserInfoStore = create<State & Action>()((set, get) => ({
   userInfo: null,
   setUserInfo(userInfo) {
     set({ userInfo: { ...userInfo } });
-    console.log("userInfo==>", get().userInfo);
   },
 }));
