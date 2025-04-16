@@ -8,15 +8,7 @@ import UncertainHeightVirtualList, {
 } from "@/components/uncertain-height-virtual-list";
 import chatData from "@/mock/chatData.json";
 import { addMessageToChatHistory, getChatHistory } from "@/store/chatHistoryDB";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import dayjs from "dayjs";
+import SearchModule from "./search-module";
 
 enum Role {
   CUSTOMER = "customer",
@@ -64,19 +56,17 @@ function Item({
   );
 }
 
+const customerInfo = {
+  name: faker.person.fullName(),
+  avatar: faker.image.avatar(),
+  id: 1,
+};
+
 function CustomerChat() {
   const { t } = useTranslation();
   const [value, setValue] = useState<string>("");
-  const [keywords, setKeywords] = useState<string>("");
-  const [customerInfo] = useState({
-    name: faker.person.fullName(),
-    avatar: faker.image.avatar(),
-    id: 1,
-  });
-  const [filteredData, setFilteredData] = useState<Message[]>(
-    chatData as Message[]
-  );
   const listRef = useRef<VariableSizeListRef | null>(null);
+  const [listData, setListData] = useState<Message[]>(chatData as Message[]);
 
   // 存放高度数组
   const heightsRef = useRef<{ [key: number]: number }>({});
@@ -100,35 +90,6 @@ function CustomerChat() {
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-  };
-
-  const handleSearch = (keyword: string) => {
-    // Perform search logic here
-    setKeywords(keyword);
-    getChatHistory((messages) => {
-      const currentHistory = messages.find(
-        (item: Message) => item.id === customerInfo.id
-      );
-      const filteredHistory = currentHistory.history.filter((item: Message) =>
-        item.content.toLowerCase().includes(keyword.toLowerCase())
-      );
-      setFilteredData(filteredHistory);
-    });
-  };
-
-  const renderFilteredDataItemContent = (content: string) => {
-    const startIndex = content.toLowerCase().indexOf(keywords.toLowerCase());
-    const endIndex = startIndex + keywords.length;
-    const beforeKeyword = content.slice(0, startIndex);
-    const keyword = content.slice(startIndex, endIndex);
-    const afterKeyword = content.slice(endIndex);
-    return (
-      <div className="text-xs">
-        {beforeKeyword}
-        <span className="text-red-500 font-bold">{keyword}</span>
-        {afterKeyword}
-      </div>
-    );
   };
 
   return (
@@ -181,32 +142,7 @@ function CustomerChat() {
           </div>
         </div>
         <div className="border my-8 mr-8 p-4 rounded-lg shadow-md bg-white w-[250px]">
-          <Command>
-            <CommandInput
-              value={keywords}
-              placeholder={t("search-chat-hisory")}
-              onValueChange={handleSearch}
-            />
-            {keywords.length !== 0 && (
-              <CommandList className="max-h-[560px] overflow-y-auto">
-                {filteredData?.length === 0 && (
-                  <CommandEmpty>{t("no-results-found")}</CommandEmpty>
-                )}
-                <CommandGroup heading={t("search-result")}>
-                  {filteredData?.map((item) => (
-                    <CommandItem key={item.id}>
-                      <div>
-                        <div className="text-xs text-gray-500 ">
-                          {dayjs(item.create_at).format("YYYY-MM-DD HH:MM:ss")}
-                        </div>
-                        {renderFilteredDataItemContent(item.content)}
-                      </div>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            )}
-          </Command>
+          <SearchModule />
         </div>
       </div>
     </>
