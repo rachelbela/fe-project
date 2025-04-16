@@ -24,5 +24,8 @@
   "chinese": "중국인",
   "english": "영어",
   "japanese": "일본어",
-  "send": "보내다"
+  "send": "보내다",
+  "search-chat-hisory": "채팅 기록을 검색하십시오",
+  "no-results-found": "관련 기록이 없습니다",
+  "search-result": "검색 결과"
 }

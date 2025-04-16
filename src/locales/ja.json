@@ -24,5 +24,8 @@
   "chinese": "中国語",
   "english": "英語",
   "japanese": "日本語",
-  "send": "送信"
+  "send": "送信",
+  "search-chat-hisory": "チャット履歴を検索します",
+  "no-results-found": "関連する記録は見つかりませんでした",
+  "search-result": "検索結果"
 }

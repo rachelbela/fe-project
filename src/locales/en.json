@@ -24,5 +24,8 @@
   "chinese": "Chinese",
   "english": "English",
   "japanese": "Japanese",
-  "send": "send"
+  "send": "send",
+  "search-chat-hisory": "Search for chat history",
+  "no-results-found": "No relevant records found",
+  "search-result": "Search results"
 }

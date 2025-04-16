@@ -13,6 +13,7 @@ import "./wasm_exec.js";
 import ChatHistory from "./app/chatHistory/page.tsx";
 import List from "./app/list/index.tsx";
 import "./i18n.ts";
+import "./indexedDB.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
