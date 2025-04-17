@@ -3,7 +3,7 @@ import DataTabs from "@/components/data-tabs";
 import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Outlet, useLocation, useNavigate } from "react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createTabDataStore } from "@/store/tabDataSlice";
 import { TabDataContext } from "./tabBarContext";
 import { useUserInfoStore } from "@/store/userInfoSlice";
@@ -22,6 +22,7 @@ export default function Page() {
   ).current;
   const navigate = useNavigate();
   const location = useLocation();
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -29,12 +30,13 @@ export default function Page() {
     if (localStorage.getItem(token)) {
       const obj = JSON.parse(localStorage.getItem(token) || "");
       setUserInfo(obj);
+      setIsLogin(true);
     } else {
       navigate("/login");
     }
   }, [location.search]);
 
-  return (
+  return isLogin ? (
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
@@ -49,5 +51,5 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  ) : null;
 }

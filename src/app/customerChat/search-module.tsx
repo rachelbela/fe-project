@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
+import { Command, CommandInput } from "@/components/ui/command";
 import dayjs from "dayjs";
 import { getChatHistory } from "@/store/chatHistoryDB";
 import { Message } from ".";
@@ -21,11 +14,13 @@ function Item({
   data,
   keyword,
   setHeight,
+  onClick,
 }: {
   index: number;
   data: Message[];
   keyword: string;
   setHeight: (index: number, height: number) => void;
+  onClick: () => void;
 }) {
   const itemRef = useRef<HTMLDivElement>(null);
   const item = data[index];
@@ -56,8 +51,10 @@ function Item({
       ref={itemRef}
       key={index}
       className={`flex items-center gap-2 hover:bg-gray-100 cursor-pointer p-2 rounded-md`}
+      onClick={onClick}
     >
       <div>
+        id: {item.id}
         <div className="text-xs text-gray-500 ">
           {dayjs(item.create_at).format("YYYY-MM-DD HH:MM:ss")}
         </div>
@@ -67,7 +64,11 @@ function Item({
   );
 }
 
-function SearchModule() {
+function SearchModule({
+  handleJumpToIndex,
+}: {
+  handleJumpToIndex: (index: number) => void;
+}) {
   const { t } = useTranslation();
   const [keyword, setKeyword] = useState<string>("");
   const [filteredData, setFilteredData] = useState<any[]>(
@@ -101,6 +102,10 @@ function SearchModule() {
       );
       setFilteredData(filteredHistory);
     });
+  };
+
+  const handleOnClick = (index: number) => {
+    handleJumpToIndex(index);
   };
 
   return (
@@ -138,6 +143,7 @@ function SearchModule() {
                       data={data}
                       setHeight={setHeight}
                       keyword={keyword}
+                      onClick={() => handleOnClick(index)}
                     />
                   </div>
                 );

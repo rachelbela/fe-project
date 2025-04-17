@@ -20,11 +20,10 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Admin />}>
-          {/* <Route index element={<Workbench />}></Route> */}
+          <Route path="workbench" element={<Workbench />}></Route>
           <Route path="talkLibrary" element={<TalkLibrary />}></Route>
           <Route path="peopleManagement" element={<PeopleManagement />}></Route>
           <Route path="customerChat" element={<CustomerChat />}></Route>
-          <Route path="workbench" element={<Workbench />}></Route>
           <Route path="virtualList" element={<ChatHistory />} />
           <Route path="list" element={<List />} />
         </Route>

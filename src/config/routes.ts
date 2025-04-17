@@ -1,5 +1,10 @@
 export const routesTable = [
   {
+    name: "home",
+    pathname: "/",
+    path: [{ name: "home", link: "/" }],
+  },
+  {
     name: "talk-library",
     pathname: "/talkLibrary",
     path: [

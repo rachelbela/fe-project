@@ -14,7 +14,9 @@ function DataTabs() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   useEffect(() => {
-    activateTab(location.pathname);
+    if (location.pathname !== "/") {
+      activateTab(location.pathname);
+    }
   }, [location]);
 
   const handleDelete = (

@@ -71,7 +71,7 @@ function CustomerChat() {
   // 存放高度数组
   const heightsRef = useRef<{ [key: number]: number }>({});
   // 预估高度
-  const estimatedItemHeight = 40;
+  const estimatedItemHeight = 150;
 
   const setHeight = (index: number, height: number) => {
     if (heightsRef.current[index] !== height) {
@@ -90,6 +90,12 @@ function CustomerChat() {
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+  };
+
+  const handleJumpToIndex = (index: number) => {
+    if (listRef.current) {
+      listRef.current.scrollToIndex(index);
+    }
   };
 
   return (
@@ -142,7 +148,7 @@ function CustomerChat() {
           </div>
         </div>
         <div className="border my-8 mr-8 p-4 rounded-lg shadow-md bg-white w-[250px]">
-          <SearchModule />
+          <SearchModule handleJumpToIndex={handleJumpToIndex} />
         </div>
       </div>
     </>

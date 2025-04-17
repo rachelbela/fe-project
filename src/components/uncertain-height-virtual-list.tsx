@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 // 动态列表组件
@@ -16,6 +16,7 @@ interface VariableSizeListProps {
 
 export interface VariableSizeListRef {
   resetHeight: () => void;
+  scrollToIndex: (index: number) => void;
 }
 
 // 动态列表组件
@@ -26,12 +27,27 @@ const VariableSizeList = forwardRef<VariableSizeListRef, VariableSizeListProps>(
         resetHeight: () => {
           setOffsets(genOffsets());
         },
+        scrollToIndex: (index: number) => {
+          console.log("scrollToIndex offset", offsets[index]);
+          if (index < 1) {
+            containerRef.current?.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          } else {
+            containerRef.current?.scrollTo({
+              top: offsets[index - 1],
+              behavior: "smooth",
+            });
+          }
+        },
       };
     }
 
     // children 语义不好，赋值给 Component
     const Component = children;
     const [scrollTop, setScrollTop] = useState(0); // 滚动高度
+    const containerRef = useRef<HTMLDivElement>(null); // 容器引用
 
     const genOffsets = () => {
       const a = [];
@@ -84,6 +100,7 @@ const VariableSizeList = forwardRef<VariableSizeListRef, VariableSizeListProps>(
 
     return (
       <div
+        ref={containerRef}
         style={{
           height: containerHeight,
           overflow: "auto",
