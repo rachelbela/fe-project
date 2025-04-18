@@ -7,7 +7,7 @@ import UncertainHeightVirtualList, {
   VariableSizeListRef,
 } from "@/components/uncertain-height-virtual-list";
 import chatData from "@/mock/chatData.json";
-import { addMessageToChatHistory, getChatHistory } from "@/store/chatHistoryDB";
+import { addMessageToChatHistory } from "@/store/chatHistoryDB";
 import SearchModule from "./search-module";
 
 enum Role {
@@ -66,7 +66,6 @@ function CustomerChat() {
   const { t } = useTranslation();
   const [value, setValue] = useState<string>("");
   const listRef = useRef<VariableSizeListRef | null>(null);
-  const [listData, setListData] = useState<Message[]>(chatData as Message[]);
 
   // 存放高度数组
   const heightsRef = useRef<{ [key: number]: number }>({});
