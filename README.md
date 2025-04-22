@@ -9,4 +9,4 @@
 - 图表库：Recharts
 - 状态管理：zustand
 - 路由： react-router
-- 数据获取： swr
+- 请求状态管理： react-query
