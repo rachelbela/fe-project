@@ -1,4 +1,4 @@
-import { UserInfo } from "@/types";
+import { UserInfo } from "@/types/entity";
 import { create } from "zustand";
 
 interface State {
@@ -15,3 +15,6 @@ export const useUserInfoStore = create<State & Action>()((set, get) => ({
     set({ userInfo: { ...userInfo } });
   },
 }));
+
+export const useUserPermission = () =>
+  useUserInfoStore((state) => state.userInfo?.permissions);

@@ -4,6 +4,7 @@ import Login from "@/pages/sys/login";
 import { createBrowserRouter, RouteObject, RouterProvider } from "react-router";
 import { ERROR_ROUTE } from "./error-routes";
 import DashboardLayout from "@/layout/dashboard";
+import { useUserPermission } from "@/store/userInfoSlice";
 
 const PUBLIC_ROUTE: RouteObject = {
   path: "/login",
@@ -15,6 +16,9 @@ const PUBLIC_ROUTE: RouteObject = {
 };
 
 function Router() {
+  const permissions = useUserPermission();
+  console.log("permissions", permissions);
+
   const permissionRoutes: RouteObject[] = [];
   const PROTECTED_ROUTE: RouteObject = {
     path: "/",

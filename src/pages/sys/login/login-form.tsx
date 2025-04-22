@@ -11,9 +11,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import { RoleTypeMap } from "@/config/role";
 import { AesEncryptGCM } from "@/lib/aes";
 import { useTranslation } from "react-i18next";
+import userService, { SignInReq } from "@/api/service/userService";
+import { useMutation } from "@tanstack/react-query";
+import { useUserInfoStore } from "@/store/userInfoSlice";
+
+const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
 export function LoginForm({
   className,
@@ -21,25 +25,45 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   const { t } = useTranslation();
   let navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [psw, setPsw] = useState("");
-  const handleLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUserInfo } = useUserInfoStore();
+
+  const signInMutation = useMutation({
+    mutationFn: (data: SignInReq) => {
+      return userService.signin(data);
+    },
+  });
+
+  const handleLogin = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
-    if (!email || !psw) return;
-    const token = `token_${Date.now()}`;
-    AesEncryptGCM(token).then((res) => {
-      console.log("加密后的结果", res);
-      const userInfo = {
-        username: "Vben",
-        email,
-        avatar:
-          "https://unpkg.com/@vbenjs/static-source@0.1.7/source/avatar-v1.webp",
-        token: res,
-        role: RoleTypeMap.MANAGER,
-      };
-      localStorage.setItem(token, JSON.stringify(userInfo));
-      navigate({ pathname: "/workbench", search: `?t=${token}` });
-    });
+
+    if (!username || !password) return;
+
+    try {
+      const res = await signInMutation.mutateAsync({ username, password });
+      console.log("登录接口返回结果", res);
+
+      const { user, accessToken } = res;
+      setUserInfo(user);
+      if (accessToken) {
+        AesEncryptGCM(accessToken).then((encryptToken) => {
+          console.log("加密后的结果", encryptToken);
+          const userInfo = {
+            ...user,
+            accessToken: encryptToken,
+          };
+          localStorage.setItem(encryptToken, JSON.stringify(userInfo));
+          navigate({ pathname: HOMEPAGE, search: `?t=${encryptToken}` });
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("done");
+    }
   };
 
   return (
@@ -60,8 +84,8 @@ export function LoginForm({
                   id="email"
                   type="email"
                   placeholder="m@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>
@@ -79,8 +103,8 @@ export function LoginForm({
                   id="password"
                   type="password"
                   required
-                  value={psw}
-                  onChange={(e) => setPsw(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex flex-col gap-3">
