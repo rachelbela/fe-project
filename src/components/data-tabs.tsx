@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import SVGIcon from "@/components/ui/svgIcon";
 import { useContext } from "react";
-import { TabDataContext } from "@/app/admin/tabBarContext";
+import { TabDataContext } from "@/layout/dashboard/tabBarContext";
 import { useStore } from "zustand";
 import { useTranslation } from "react-i18next";
 

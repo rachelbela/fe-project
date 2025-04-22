@@ -12,7 +12,7 @@ import { NavUser } from "./nav-user";
 import { useUserInfoStore } from "@/store/userInfoSlice";
 import DarkModeSwitch from "./dark-mode-switch";
 import { useContext, useEffect } from "react";
-import { BreadcrumbDataContext } from "@/app/admin/breadcrumbContext";
+import { BreadcrumbDataContext } from "@/layout/dashboard/breadcrumbContext";
 import { useStore } from "zustand";
 import { useLocation } from "react-router";
 import { routesTable } from "@/config/routes";
