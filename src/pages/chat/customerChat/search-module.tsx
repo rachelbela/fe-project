@@ -4,10 +4,10 @@ import { Command, CommandInput } from "@/components/ui/command";
 import dayjs from "dayjs";
 import { getChatHistory } from "@/store/chatHistoryDB";
 import { Message } from ".";
-import chatData from "@/mock/chatData.json";
 import UncertainHeightVirtualList, {
   VariableSizeListRef,
 } from "@/components/uncertain-height-virtual-list";
+import { CHAT_DATA } from "@/_mock/assets";
 
 function Item({
   index,
@@ -72,7 +72,7 @@ function SearchModule({
   const { t } = useTranslation();
   const [keyword, setKeyword] = useState<string>("");
   const [filteredData, setFilteredData] = useState<any[]>(
-    chatData as Message[]
+    CHAT_DATA as Message[]
   );
   const listRef = useRef<VariableSizeListRef>(null);
   const heightsRef = useRef<number[]>([]);

@@ -1,4 +1,4 @@
-import { routesTable } from "@/config/routes";
+// import { routesTable } from "@/config/routes";
 import { createStore } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 export interface Tab {
@@ -32,6 +32,7 @@ export const createTabDataStore = (initProps?: Partial<State>) => {
         ...initProps,
         activateTab: (pathname: string) => {
           const oldTabs = get().tabs;
+          const routesTable: any[] = [];
           // 组装tab信息
           const name = routesTable.find((v) => v.pathname === pathname)?.name;
           if (!name) {

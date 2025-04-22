@@ -18,7 +18,7 @@ const SVGIcon: React.FC<IconProps> = ({
   useEffect(() => {
     const importSvgIcon = async () => {
       try {
-        const icon = await import(`../../icons/${name}.svg?react`);
+        const icon = await import(`../../../assets/icons/${name}.svg?react`);
         setSvgIcon(() => icon.default);
       } catch (error) {
         console.error(`Error loading SVG icon: ${name}`, error);

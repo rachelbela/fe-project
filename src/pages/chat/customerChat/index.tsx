@@ -6,9 +6,9 @@ import { faker } from "@faker-js/faker";
 import UncertainHeightVirtualList, {
   VariableSizeListRef,
 } from "@/components/uncertain-height-virtual-list";
-import chatData from "@/mock/chatData.json";
 import { addMessageToChatHistory } from "@/store/chatHistoryDB";
 import SearchModule from "./search-module";
+import { CHAT_DATA } from "@/_mock/assets";
 
 enum Role {
   CUSTOMER = "customer",
@@ -84,7 +84,7 @@ function CustomerChat() {
   };
 
   useEffect(() => {
-    addMessageToChatHistory({ id: 1, history: chatData });
+    addMessageToChatHistory({ id: 1, history: CHAT_DATA });
   }, []);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,8 +114,8 @@ function CustomerChat() {
           <UncertainHeightVirtualList
             ref={listRef}
             containerHeight={500}
-            itemCount={chatData.length}
-            itemData={chatData}
+            itemCount={CHAT_DATA.length}
+            itemData={CHAT_DATA}
             getItemHeight={getHeight}
           >
             {({

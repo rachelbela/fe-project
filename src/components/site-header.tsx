@@ -15,7 +15,6 @@ import { useContext, useEffect } from "react";
 import { BreadcrumbDataContext } from "@/layout/dashboard/breadcrumbContext";
 import { useStore } from "zustand";
 import { useLocation } from "react-router";
-import { routesTable } from "@/config/routes";
 import MultiLanguage from "./multi-language";
 import { useTranslation } from "react-i18next";
 
@@ -54,12 +53,13 @@ export function SiteHeader() {
   }
 
   useEffect(() => {
-    const item = routesTable.find((v) => v.pathname === location.pathname);
-    if (!item) {
-      throw Error(t("can-not-find-the-path-in-routes"));
-    } else {
-      activateBreacrumb(item.path);
-    }
+    // const routesTable = [];
+    // const item = routesTable.find((v) => v.pathname === location.pathname);
+    // if (!item) {
+    //   throw Error(t("can-not-find-the-path-in-routes"));
+    // } else {
+    //   activateBreacrumb(item.path);
+    // }
   }, [location.pathname]);
 
   return (
