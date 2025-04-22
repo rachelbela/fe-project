@@ -1,0 +1,17 @@
+{
+  "okText": "確認する",
+  "closeText": "閉鎖",
+  "cancelText": "キャンセル",
+  "loadingText": "読み込み...",
+  "saveText": "保存",
+  "delText": "消去",
+  "resetText": "リセット",
+  "searchText": "検索",
+  "queryText": "クエリ",
+  "inputText": "入力してください",
+  "chooseText": "選択してください",
+  "redo": "リフレッシュします",
+  "back": "戻る",
+  "light": "明るいテーマ",
+  "dark": "暗いテーマ"
+}

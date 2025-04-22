@@ -17,7 +17,6 @@ const PUBLIC_ROUTE: RouteObject = {
 
 function Router() {
   const permissions = useUserPermission();
-  console.log("permissions", permissions);
 
   const permissionRoutes: RouteObject[] = [];
   const PROTECTED_ROUTE: RouteObject = {

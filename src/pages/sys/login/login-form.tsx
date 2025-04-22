@@ -1,12 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router";
@@ -23,7 +17,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["sys"]);
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -70,20 +64,17 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>{t("login-to-your-account")}</CardTitle>
-          <CardDescription>
-            {t("enter-your-email-below-to-login-to-your-account")}
-          </CardDescription>
+          <CardTitle>{t("login.signInFormTitle")}</CardTitle>
         </CardHeader>
         <CardContent>
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
-                <Label htmlFor="email">{t("email")}</Label>
+                <Label htmlFor="username">{t("login.userName")}</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
+                  id="username"
+                  type="text"
+                  placeholder={t("login.accountPlaceholder")}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
@@ -91,12 +82,12 @@ export function LoginForm({
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
-                  <Label htmlFor="password">{t("password")}</Label>
+                  <Label htmlFor="password">{t("login.password")}</Label>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    {t("forgot-your-password")}
+                    {t("login.forgetPassword")}
                   </a>
                 </div>
                 <Input
@@ -115,18 +106,9 @@ export function LoginForm({
                     handleLogin(e);
                   }}
                 >
-                  {t("login")}
-                </Button>
-                <Button variant="outline" className="w-full">
-                  {t("login-with-google")}
+                  {t("login.loginButton")}
                 </Button>
               </div>
-            </div>
-            <div className="mt-4 text-center text-sm">
-              {t("don-and-apos-t-have-an-account")}{" "}
-              <a href="#" className="underline underline-offset-4">
-                {t("sign-up")}
-              </a>
             </div>
           </form>
         </CardContent>
