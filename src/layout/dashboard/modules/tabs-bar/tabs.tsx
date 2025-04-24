@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import SVGIcon from "@/components/ui/svgIcon";
 import { useContext } from "react";
-import { TabDataContext } from "@/layout/dashboard/tabBarContext";
+import { TabDataContext } from "@/layout/dashboard/context/tabBarContext";
 import { useStore } from "zustand";
 import { useTranslation } from "react-i18next";
 
-function DataTabs() {
+function Tabs() {
   const store = useContext(TabDataContext);
   if (!store) throw new Error("Missing BearContext.Provider in the tree");
   const { tabs, activateTab, removeTab, curTab } = useStore(store);
@@ -73,4 +73,4 @@ function DataTabs() {
   );
 }
 
-export default DataTabs;
+export default Tabs;

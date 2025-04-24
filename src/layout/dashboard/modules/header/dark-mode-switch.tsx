@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Label } from "./ui/label";
-import { Switch } from "./ui/switch";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { Icon } from "@iconify/react";
 
 function DarkModeSwitch() {

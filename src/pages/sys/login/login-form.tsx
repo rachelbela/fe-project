@@ -38,19 +38,16 @@ export function LoginForm({
 
     try {
       const res = await signInMutation.mutateAsync({ username, password });
-      console.log("登录接口返回结果", res);
-
       const { user, accessToken } = res;
       setUserInfo(user);
       if (accessToken) {
         AesEncryptGCM(accessToken).then((encryptToken) => {
-          console.log("加密后的结果", encryptToken);
           const userInfo = {
             ...user,
             accessToken: encryptToken,
           };
-          localStorage.setItem(encryptToken, JSON.stringify(userInfo));
-          navigate({ pathname: HOMEPAGE, search: `?t=${encryptToken}` });
+          localStorage.setItem(user.username, JSON.stringify(userInfo));
+          navigate({ pathname: HOMEPAGE, search: `?t=${user.username}` });
         });
       }
     } catch (error) {
@@ -83,12 +80,6 @@ export function LoginForm({
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">{t("login.password")}</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    {t("login.forgetPassword")}
-                  </a>
                 </div>
                 <Input
                   id="password"

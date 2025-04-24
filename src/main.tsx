@@ -14,4 +14,4 @@ createRoot(document.getElementById("root")!).render(
   </StrictMode>
 );
 
-worker.start();
+worker.start({ onUnhandledRequest: "bypass" });

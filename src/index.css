@@ -76,6 +76,7 @@
   --sidebar-ring: oklch(0.623 0.214 259.815);
   --tabbar-background: oklch(1 0 0);
   --tabbar-foreground:oklch(0.97 0.0017 247.84);
+  --header-height:44px;
 }
 
 .dark {
