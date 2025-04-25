@@ -13,15 +13,15 @@ i18n
   // 初始化 i18next
   // 配置参数的文档: https://www.i18next.com/overview/configuration-options
   .init({
-    ns: ["common", "sys"],
+    ns: ["sys", "common"],
     backend: {
-      loadPath: "src/locales/{{ns}}/{{lng}}.json",
+      loadPath: "/src/locales/{{ns}}/{{lng}}.json",
     },
     detection: {
       order: ["localStorage"],
       caches: ["localStorage"], // cache user language on
     },
-    // debug: true,
+    debug: true,
     fallbackLng: "en",
     interpolation: {
       escapeValue: false,

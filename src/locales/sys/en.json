@@ -23,64 +23,14 @@
     "errMsg505": "The http version does not support this request!"
   },
   "menu": {
-    "dashboard": "meter",
+    "dashboard": "Dashboard",
     "workbench": "Workbench",
-    "analysis": "analyze",
-    "management": "manage",
-    "user": {
-      "index": "user",
-      "profile": "Personal Profile",
-      "account": "Account"
-    },
-    "system": {
-      "index": "system",
-      "organization": "organize",
-      "permission": "Permissions",
-      "role": "Role",
-      "user": "user",
-      "user_detail": "User details"
-    },
-    "blog": "blog",
-    "components": "Components",
-    "icon": "icon",
-    "animate": "Animation",
-    "scroll": "scroll",
-    "markdown": "Markdown",
-    "editor": "Rich text",
-    "i18n": "Multilingual",
-    "upload": "Upload",
-    "chart": "chart",
-    "toast": "Toast",
-    "functions": "Function",
-    "clipboard": "Clipboard",
-    "token_expired": "Token invalid",
-    "menulevel": {
-      "index": "Multi-level menu",
-      "1a": "Multi-level menu 1a",
-      "1b": {
-        "index": "Multi-level menu 1b",
-        "2a": "Multi-level menu 2a",
-        "2b": {
-          "index": "Multi-level menu 2b",
-          "3a": "Multi-level menu 3a",
-          "3b": "Multi-level menu 3b"
-        }
-      }
-    },
-    "disabled": "Project disabled",
-    "label": "Project Tags",
-    "frame": "Project external links",
-    "external_link": "External link",
-    "iframe": "Inline",
-    "blank": "blank",
-    "calendar": "calendar",
-    "kanban": "Kanban",
-    "error": {
-      "403": "403",
-      "404": "404",
-      "500": "500",
-      "index": "Exception page"
-    }
+    "analysis": "Analyze",
+    "channelManagement": "Channel Management",
+    "customerManagement": "Customer Management",
+    "groupMessage": "Mass message",
+    "liveChat": "Online Chat",
+    "messageCenter": "Message Center"
   },
   "login": {
     "accountPlaceholder": "Please enter your account number",
@@ -123,5 +73,10 @@
     "smsPlaceholder": "Please enter the verification code",
     "termsOfService": "Terms of Service",
     "userName": "account"
+  },
+  "language": {
+    "zh": "Chinese",
+    "en": "English",
+    "jp": "Japanese"
   }
 }

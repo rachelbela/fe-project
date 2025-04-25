@@ -4,7 +4,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Icon } from "@iconify/react";
+import IconifyIcon from "@/components/ui/iconify-icon";
 import { useTranslation } from "react-i18next";
 
 function MultiLanguage() {
@@ -13,12 +13,13 @@ function MultiLanguage() {
     i18n.changeLanguage(value);
   };
 
+  console.log("当前语言===>", i18n.language);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div className="flex space-x-0.5 items-center">
-          <Icon icon="flowbite:language-outline" width="18" height="18" />
-          <Icon icon="icon-park-outline:down" width="18" height="18" />
+          <span className="text-xs">{t(`sys:language.${i18n.language}`)}</span>
+          <IconifyIcon icon="icon-park-outline:down" width="18" height="18" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -27,28 +28,21 @@ function MultiLanguage() {
             handleToggleLanguage("zh");
           }}
         >
-          {t("chinese")}
+          {t("sys:language.zh")}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             handleToggleLanguage("en");
           }}
         >
-          {t("english")}
+          {t("sys:language.en")}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
-            handleToggleLanguage("ja");
+            handleToggleLanguage("jp");
           }}
         >
-          {t("japanese")}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => {
-            handleToggleLanguage("ko");
-          }}
-        >
-          {t("korean")}
+          {t("sys:language.jp")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

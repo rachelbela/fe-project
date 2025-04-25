@@ -5,7 +5,7 @@
     "errorTip": "エラーメッセージ",
     "successTip": "成功のヒント",
     "errorMessage": "操作が失敗し、システム異常！",
-    "timeoutMessage": "ログインタイムアウト、もう一度ログインしてください！",
+    "timeoutMessage": "ログインタイアウト、もう一度ログインしてください！",
     "apiTimeoutMessage": "インターフェイスリクエストがタイムアウトします。ページを更新して、再試行してください！",
     "apiRequestFailed": "リクエストにエラーがありました、もう一度やり直してください",
     "networkException": "ネットワークの例外",
@@ -23,64 +23,14 @@
     "errMsg505": "HTTPバージョンはこのリクエストをサポートしていません！"
   },
   "menu": {
-    "dashboard": "メーター",
-    "workbench": "ワークベンチ",
-    "analysis": "分析します",
-    "management": "管理",
-    "user": {
-      "index": "ユーザー",
-      "profile": "個人的なプロフィール",
-      "account": "アカウント"
-    },
-    "system": {
-      "index": "システム",
-      "organization": "整理する",
-      "permission": "権限",
-      "role": "役割",
-      "user": "ユーザー",
-      "user_detail": "ユーザーの詳細"
-    },
-    "blog": "ブログ",
-    "components": "コンポーネント",
-    "icon": "アイコン",
-    "animate": "アニメーション",
-    "scroll": "スクロール",
-    "markdown": "マークダウン",
-    "editor": "豊富なテキスト",
-    "i18n": "多言語",
-    "upload": "アップロード",
-    "chart": "チャート",
-    "toast": "トースト",
-    "functions": "関数",
-    "clipboard": "クリップボード",
-    "token_expired": "トークンは無効です",
-    "menulevel": {
-      "index": "マルチレベルメニュー",
-      "1a": "マルチレベルメニュー1A",
-      "1b": {
-        "index": "マルチレベルメニュー1b",
-        "2a": "マルチレベルメニュー2A",
-        "2b": {
-          "index": "マルチレベルメニュー2b",
-          "3a": "マルチレベルメニュー3A",
-          "3b": "マルチレベルメニュー3b"
-        }
-      }
-    },
-    "disabled": "プロジェクトが無効になっています",
-    "label": "プロジェクトタグ",
-    "frame": "プロジェクト外部リンク",
-    "external_link": "外部リンク",
-    "iframe": "列をなして",
-    "blank": "空白",
-    "calendar": "カレンダー",
-    "kanban": "かんばん",
-    "error": {
-      "403": "403",
-      "404": "404",
-      "500": "500",
-      "index": "例外ページ"
-    }
+    "dashboard": "ダッシュボード",
+    "workbench": "カウンター",
+    "analysis": "分析",
+    "channelManagement": "ャンネル今すぐチェック",
+    "customerManagement": "顧客管理",
+    "groupMessage": "一括メッセージ",
+    "liveChat": "ライブチャット",
+    "messageCenter": "メッセージセンター"
   },
   "login": {
     "backSignIn": "return",
@@ -123,5 +73,10 @@
     "termsOfService": "Terms of Service",
     "userName": "account",
     "accountPlaceholder": "Please enter your account number"
+  },
+  "language": {
+    "zh": "中国語",
+    "en": "英語",
+    "jp": "日本語"
   }
 }

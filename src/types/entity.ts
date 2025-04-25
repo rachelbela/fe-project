@@ -30,16 +30,11 @@ export interface Permission {
   parentId: string;
   name: string;
   label: string;
-  type: PermissionType;
   route: string;
-  status?: BasicStatus;
-  order?: number;
   icon?: string;
   component?: string;
-  hide?: boolean;
-  hideTab?: boolean;
-  frameSrc?: URL;
-  newFeature?: boolean;
+  frameSrc?: URL; // 外链
+  badge?: number; // 徽标
   children?: Permission[];
 }
 
