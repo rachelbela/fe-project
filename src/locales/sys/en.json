@@ -31,7 +31,11 @@
     "groupMessage": "Mass message",
     "liveChat": "Online Chat",
     "messageCenter": "Message Center",
-    "costCenter": "Fee Center"
+    "costCenter": "Fee Center",
+    "systemHomepage": "System homepage",
+    "systemSetting": "System Settings",
+    "userCenter": "User Center",
+    "userManagement": "User Management"
   },
   "login": {
     "accountPlaceholder": "Please enter your account number",

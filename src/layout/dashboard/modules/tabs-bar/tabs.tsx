@@ -35,7 +35,7 @@ function Tabs() {
   };
 
   return (
-    <div className="flex overflow-hidden bg-[var(--tabbar-background)]">
+    <div className="ml-5 flex overflow-hidden bg-[var(--tabbar-background)] rounded-bl-lg">
       {tabs.map((v, index) => (
         <div
           key={v.pathname}

@@ -31,7 +31,11 @@
     "groupMessage": "一括メッセージ",
     "liveChat": "ライブチャット",
     "messageCenter": "メッセージセンター",
-    "costCenter": "手数料中部"
+    "costCenter": "手数料中部",
+    "systemHomepage": "System homepage",
+    "systemSetting": "System Settings",
+    "userCenter": "User Center",
+    "userManagement": "User Management"
   },
   "login": {
     "backSignIn": "return",

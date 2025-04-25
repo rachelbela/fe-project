@@ -11,6 +11,12 @@ import { ERROR_ROUTE } from "./error-routes";
 import DashboardLayout from "@/layout/dashboard";
 import Workbench from "@/pages/dashboard/workbench";
 import Analysis from "@/pages/dashboard/analysis";
+import UserManagement from "@/pages/userManagement";
+import UserCenter from "@/pages/userCenter";
+import CostCenter from "@/pages/costCenter";
+import SystemSetting from "@/pages/systemSetting";
+import SystemHomepage from "@/pages/systemHomepage";
+import MessageCenter from "@/pages/messageCenter";
 
 const PUBLIC_ROUTE: RouteObject = {
   path: "/login",
@@ -38,6 +44,30 @@ function Router() {
             element: <Analysis />,
           },
         ],
+      },
+      {
+        path: "/userManagement",
+        element: <UserManagement />,
+      },
+      {
+        path: "/userCenter",
+        element: <UserCenter />,
+      },
+      {
+        path: "/costCenter",
+        element: <CostCenter />,
+      },
+      {
+        path: "/systemSetting",
+        element: <SystemSetting />,
+      },
+      {
+        path: "/systemHomepage",
+        element: <SystemHomepage />,
+      },
+      {
+        path: "/messageCenter",
+        element: <MessageCenter />,
       },
     ],
   };

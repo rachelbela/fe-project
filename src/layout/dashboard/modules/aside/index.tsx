@@ -9,7 +9,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { useUserPermission } from "@/store/userInfoSlice";
+import { useUserInfoStore, useUserPermission } from "@/store/userInfoSlice";
 import { Permission } from "@/types/entity";
 import { Link } from "react-router";
 import IconifyIcon from "@/components/ui/iconify-icon";
@@ -24,6 +24,7 @@ import { useTranslation } from "react-i18next";
 
 export function Aside() {
   const permissions = useUserPermission();
+  const username = useUserInfoStore((state) => state.userInfo?.username);
   const { t } = useTranslation(["sys"]);
 
   // 递归生成菜单项
@@ -40,7 +41,9 @@ export function Aside() {
             <SidebarMenuSubButton asChild>
               <div className="flex items-center">
                 {item.icon && <IconifyIcon icon={item.icon} />}
-                <Link to={{ pathname: item.route }}>{t(item.label)}</Link>
+                <Link to={{ pathname: item.route, search: `?t=${username}` }}>
+                  {t(item.label)}
+                </Link>
               </div>
             </SidebarMenuSubButton>
           </div>

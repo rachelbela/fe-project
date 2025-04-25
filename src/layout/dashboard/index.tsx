@@ -4,6 +4,7 @@ import { Outlet } from "react-router";
 import useAuth from "@/hooks/use-auth";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import TabsBar from "./modules/tabs-bar";
+import { Separator } from "@radix-ui/react-separator";
 
 export default function DashboardLayout() {
   const isLogin = useAuth();
@@ -12,10 +13,10 @@ export default function DashboardLayout() {
       <Aside />
       <SidebarInset>
         <Header />
-        <div
+        <Separator
           className="h-[1px] bg-[#EBEBEB] mx-9 box-border"
           style={{ width: "calc(100% - 72px)" }}
-        ></div>
+        ></Separator>
         <TabsBar />
         <Outlet />
       </SidebarInset>

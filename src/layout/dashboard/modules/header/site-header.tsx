@@ -24,8 +24,8 @@ export function SiteHeader() {
       <div className="bg-white flex w-full h-full items-center gap-1 mp-4 lg:gap-2 lg:px-6">
         <div>首页</div>
         <div className="h-5 flex flex-1 justify-end space-x-4 items-center">
-          <DarkModeSwitch />
           <MultiLanguage />
+          <DarkModeSwitch />
           <Separator orientation="vertical" />
           <NavUser user={user} />
         </div>

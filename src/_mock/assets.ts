@@ -142,6 +142,7 @@ const GROUP_MESSAGE = {
   route: "/groupMessage",
 };
 
+/**套餐中心 */
 const COST_CENTER = {
   id: "8132044808088494",
   parentId: "",
@@ -150,7 +151,42 @@ const COST_CENTER = {
   icon: "solar:chat-round-money-line-duotone",
   route: "/costCenter",
 };
-
+/**系统首页 */
+const SYSTEM_HOMEPAGE = {
+  id: "8132044808088495",
+  parentId: "",
+  label: "menu.systemHomepage",
+  name: "systemHomepage",
+  icon: "solar:home-line-duotone",
+  route: "/systemHomepage",
+};
+/**用户管理 */
+const USER_MANAGEMENT = {
+  id: "8132044808088496",
+  parentId: "",
+  label: "menu.userManagement",
+  name: "userManagement",
+  icon: "solar:user-hand-up-outline",
+  route: "/userManagement",
+};
+/**用户中心 */
+const USER_CENTER = {
+  id: "8132044808088497",
+  parentId: "",
+  label: "menu.userCenter",
+  name: "userCenter",
+  icon: "solar:user-id-line-duotone",
+  route: "/userCenter",
+};
+/**系统配置 */
+const SYSTEM_SETTING = {
+  id: "8132044808088498",
+  parentId: "",
+  label: "menu.systemSetting",
+  name: "systemSetting",
+  icon: "solar:settings-line-duotone",
+  route: "/systemSetting",
+};
 export const PERMISSION_LIST = [
   DASHBOARD_PERMISSION,
   CHAT_PERMISSION,
@@ -179,7 +215,15 @@ const TEST_ROLE = {
   status: BasicStatus.ENABLE,
   order: 2,
   desc: "test",
-  permission: [COST_CENTER],
+  permission: [
+    SYSTEM_HOMEPAGE,
+    USER_MANAGEMENT,
+    USER_CENTER,
+    COST_CENTER,
+    MESSAGE_CENTER,
+    DASHBOARD_PERMISSION,
+    SYSTEM_SETTING,
+  ],
 };
 export const ROLE_LIST = [ADMIN_ROLE, TEST_ROLE];
 

@@ -23,7 +23,7 @@
         "errMsg505": "http版本不支持该请求!"
     },
     "menu": {
-        "dashboard": "仪表盘",
+        "dashboard": "数据中心",
         "workbench": "工作台",
         "analysis": "分析",
         "liveChat": "在线聊天",
@@ -31,7 +31,11 @@
         "messageCenter": "消息中心",
         "channelManagement": "渠道管理",
         "groupMessage": "群发消息",
-        "costCenter": "费用中心"
+        "costCenter": "费用中心",
+        "systemHomepage": "系统首页",
+        "userManagement": "用户管理",
+        "userCenter": "用户中心",
+        "systemSetting": "系统设置"
     },
     "login": {
         "backSignIn": "返回",
