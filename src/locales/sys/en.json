@@ -30,7 +30,8 @@
     "customerManagement": "Customer Management",
     "groupMessage": "Mass message",
     "liveChat": "Online Chat",
-    "messageCenter": "Message Center"
+    "messageCenter": "Message Center",
+    "costCenter": "Fee Center"
   },
   "login": {
     "accountPlaceholder": "Please enter your account number",

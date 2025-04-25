@@ -30,7 +30,8 @@
     "customerManagement": "顧客管理",
     "groupMessage": "一括メッセージ",
     "liveChat": "ライブチャット",
-    "messageCenter": "メッセージセンター"
+    "messageCenter": "メッセージセンター",
+    "costCenter": "手数料中部"
   },
   "login": {
     "backSignIn": "return",

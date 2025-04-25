@@ -142,6 +142,15 @@ const GROUP_MESSAGE = {
   route: "/groupMessage",
 };
 
+const COST_CENTER = {
+  id: "8132044808088494",
+  parentId: "",
+  label: "menu.costCenter",
+  name: "costCenter",
+  icon: "solar:chat-round-money-line-duotone",
+  route: "/costCenter",
+};
+
 export const PERMISSION_LIST = [
   DASHBOARD_PERMISSION,
   CHAT_PERMISSION,
@@ -161,7 +170,7 @@ const ADMIN_ROLE = {
   status: BasicStatus.ENABLE,
   order: 1,
   desc: "Super Admin",
-  permission: PERMISSION_LIST,
+  permission: [CHAT_PERMISSION, CUSTOMER_MANAGEMENT, CHANNEL_MANAGEMENT],
 };
 const TEST_ROLE = {
   id: "9931665660771476",
@@ -170,7 +179,7 @@ const TEST_ROLE = {
   status: BasicStatus.ENABLE,
   order: 2,
   desc: "test",
-  permission: [CHAT_PERMISSION, CUSTOMER_MANAGEMENT, CHANNEL_MANAGEMENT],
+  permission: [COST_CENTER],
 };
 export const ROLE_LIST = [ADMIN_ROLE, TEST_ROLE];
 

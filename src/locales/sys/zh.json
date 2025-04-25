@@ -30,7 +30,8 @@
         "customerManagement": "客户管理",
         "messageCenter": "消息中心",
         "channelManagement": "渠道管理",
-        "groupMessage": "群发消息"
+        "groupMessage": "群发消息",
+        "costCenter": "费用中心"
     },
     "login": {
         "backSignIn": "返回",

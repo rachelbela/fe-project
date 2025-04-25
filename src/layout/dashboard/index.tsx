@@ -2,20 +2,23 @@ import { Aside } from "./modules/aside";
 import Header from "./modules/header";
 import { Outlet } from "react-router";
 import useAuth from "@/hooks/use-auth";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import TabsBar from "./modules/tabs-bar";
 
 export default function DashboardLayout() {
   const isLogin = useAuth();
   return isLogin ? (
     <SidebarProvider>
       <Aside />
-      <div className="flex-1 flex flex-col h-screen">
+      <SidebarInset>
         <Header />
-        {/* <TabsBar /> */}
-        <div className="bg-[var(--sidebar)] flex-1">
-          <Outlet />
-        </div>
-      </div>
+        <div
+          className="h-[1px] bg-[#EBEBEB] mx-9 box-border"
+          style={{ width: "calc(100% - 72px)" }}
+        ></div>
+        <TabsBar />
+        <Outlet />
+      </SidebarInset>
     </SidebarProvider>
   ) : null;
 }

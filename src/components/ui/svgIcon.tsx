@@ -4,12 +4,14 @@ interface IconProps extends React.HTMLAttributes<SVGElement> {
   name: string;
   size?: number;
   color?: string;
+  className?: string;
 }
 
 const SVGIcon: React.FC<IconProps> = ({
   name,
   size = 24,
   color = "currentColor",
+  className,
 }) => {
   const [SvgIcon, setSvgIcon] = useState<React.FC<
     React.SVGProps<SVGSVGElement>
@@ -32,7 +34,11 @@ const SVGIcon: React.FC<IconProps> = ({
     return null; // 或者返回一个默认的图标或占位符
   }
 
-  return <SvgIcon width={size} height={size} fill={color} />;
+  return (
+    <span className={className}>
+      <SvgIcon width={size} height={size} fill={color} />
+    </span>
+  );
 };
 
 export default SVGIcon;

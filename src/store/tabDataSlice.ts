@@ -1,6 +1,9 @@
 // import { routesTable } from "@/config/routes";
 import { createStore } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { useUserInfoStore, useUserPermission } from "./userInfoSlice";
+import { Permission } from "@/types/entity";
+import i18next from "i18next";
 export interface Tab {
   pathname: string;
   name: string;
@@ -19,6 +22,29 @@ interface Action {
   };
 }
 
+function findInTree<T>(
+  tree: T[],
+  predicate: (node: T) => boolean,
+  childrenKey: keyof T
+): T | undefined {
+  for (const node of tree) {
+    if (predicate(node)) {
+      return node;
+    }
+    if (node[childrenKey] && Array.isArray(node[childrenKey])) {
+      const result = findInTree(
+        node[childrenKey] as T[],
+        predicate,
+        childrenKey
+      );
+      if (result) {
+        return result;
+      }
+    }
+  }
+  return undefined;
+}
+
 export type TabDataStore = ReturnType<typeof createTabDataStore>;
 export const createTabDataStore = (initProps?: Partial<State>) => {
   const DEFAULT_PROPS: State = {
@@ -32,9 +58,16 @@ export const createTabDataStore = (initProps?: Partial<State>) => {
         ...initProps,
         activateTab: (pathname: string) => {
           const oldTabs = get().tabs;
-          const routesTable: any[] = [];
+          const routesTable: Permission[] =
+            useUserInfoStore.getState().userInfo?.permissions || [];
+          // 使用 findInTree 查找路由
+          const route = findInTree(
+            routesTable,
+            (v) => v.route === pathname,
+            "children"
+          );
           // 组装tab信息
-          const name = routesTable.find((v) => v.pathname === pathname)?.name;
+          const name = route?.label;
           if (!name) {
             console.log("找不到路由表中的信息");
             return oldTabs;

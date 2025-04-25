@@ -85,7 +85,7 @@ export function Aside() {
           asChild
           className="data-[slot=sidebar-menu-button]:!p-1.5"
         >
-          <div className="flex item-center">
+          <div className="flex item-center text-black">
             <IconifyIcon icon="solar:shop-linear" size={24} />
             <span className="text-base font-semibold">Smartly</span>
           </div>
