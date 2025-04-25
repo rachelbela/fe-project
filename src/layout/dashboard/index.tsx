@@ -12,7 +12,7 @@ export default function DashboardLayout() {
       <div className="flex-1 flex flex-col h-screen">
         <Header />
         {/* <TabsBar /> */}
-        <div className="bg-[var(--tabbar-foreground)] flex-1">
+        <div className="bg-[var(--sidebar)] flex-1">
           <Outlet />
         </div>
       </div>
