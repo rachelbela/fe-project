@@ -18,7 +18,7 @@ export default function DashboardLayout() {
           style={{ width: "calc(100% - 72px)" }}
         ></Separator>
         <TabsBar />
-        <div className="mx-5 flex-1 overflow-auto flex flex-col mb-6">
+        <div className="mx-5 flex-1 overflow-auto flex flex-col mb-6 items-center">
           <Outlet />
         </div>
       </SidebarInset>

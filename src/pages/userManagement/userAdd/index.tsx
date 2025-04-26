@@ -21,6 +21,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { Link } from "react-router";
+import { useUserInfoStore } from "@/store/userInfoSlice";
 
 const formSchema = z.object({
   username: z
@@ -192,6 +194,7 @@ function AccordionSection({
   );
 }
 function UserAdd() {
+  const username = useUserInfoStore((state) => state.userInfo?.username);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -207,9 +210,11 @@ function UserAdd() {
   }
 
   return (
-    <div className="w-4/5 mx-auto my-5">
+    <div className="w-4/5 my-5">
       <h3 className="flex space-x-0.5 items-center">
-        <SVGIcon name="back" size={20}></SVGIcon>
+        <Link to={{ pathname: "/userManagement", search: `?t=${username}` }}>
+          <SVGIcon name="back" size={20}></SVGIcon>
+        </Link>
         <span className="text-xl font-bold leading-6">用户添加</span>
       </h3>
       <div className="flex flex-col space-y-2 py-5">
@@ -245,7 +250,13 @@ function UserAdd() {
               ))}
             </AccordionSection>
             <div className="flex space-x-3 justify-end mt-4">
-              <Button variant="outline">取消</Button>
+              <Button variant="outline" type="button">
+                <Link
+                  to={{ pathname: "/userManagement", search: `?t=${username}` }}
+                >
+                  取消
+                </Link>
+              </Button>
               <Button type="submit">确定</Button>
             </div>
           </form>
