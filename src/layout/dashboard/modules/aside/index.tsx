@@ -53,7 +53,23 @@ export function Aside() {
         const hideAllSubMenu = item.children?.every(
           (v) => v.hideInMenu === true
         );
-        return hideAllSubMenu ? null : (
+        return hideAllSubMenu ? (
+          <div
+            data-slot="sidebar-menu-item"
+            data-sidebar="menu-item"
+            className={cn("group/menu-item relative", "w-full")}
+            key={item.id}
+          >
+            <SidebarMenuSubButton asChild>
+              <div className="flex items-center">
+                {item.icon && <IconifyIcon icon={item.icon} />}
+                <Link to={{ pathname: item.route, search: `?t=${username}` }}>
+                  <span className="flex-1 text-left">{t(item.label)}</span>
+                </Link>
+              </div>
+            </SidebarMenuSubButton>
+          </div>
+        ) : (
           <Collapsible className="group/collapsible" key={item.id}>
             <CollapsibleTrigger className="flex space-x-1 items-center w-full">
               <div

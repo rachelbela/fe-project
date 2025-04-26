@@ -11,14 +11,14 @@ export default function DashboardLayout() {
   return isLogin ? (
     <SidebarProvider>
       <Aside />
-      <SidebarInset>
+      <SidebarInset className="max-h-screen">
         <Header />
         <Separator
           className="h-[1px] bg-[#EBEBEB] mx-9 box-border"
           style={{ width: "calc(100% - 72px)" }}
         ></Separator>
         <TabsBar />
-        <div className="mx-5 flex-1 overflow-hidden flex flex-col mb-6">
+        <div className="mx-5 flex-1 overflow-auto flex flex-col mb-6">
           <Outlet />
         </div>
       </SidebarInset>

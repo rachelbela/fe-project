@@ -12,12 +12,12 @@ import DashboardLayout from "@/layout/dashboard";
 import Workbench from "@/pages/dashboard/workbench";
 import Analysis from "@/pages/dashboard/analysis";
 import UserManagement from "@/pages/userManagement";
-import UserCenter from "@/pages/userCenter";
 import CostCenter from "@/pages/costCenter";
 import SystemSetting from "@/pages/systemSetting";
 import SystemHomepage from "@/pages/systemHomepage";
 import MessageCenter from "@/pages/messageCenter";
 import AddUser from "@/pages/userManagement/userAdd";
+import MerchantCertification from "@/pages/merchantCertification";
 
 const PUBLIC_ROUTE: RouteObject = {
   path: "/login",
@@ -55,8 +55,8 @@ function Router() {
         element: <AddUser />,
       },
       {
-        path: "/userCenter",
-        element: <UserCenter />,
+        path: "//merchantCertification",
+        element: <MerchantCertification />,
       },
       {
         path: "/costCenter",

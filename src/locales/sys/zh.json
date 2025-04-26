@@ -34,8 +34,9 @@
         "costCenter": "费用中心",
         "systemHomepage": "系统首页",
         "userManagement": "用户管理",
-        "userCenter": "用户中心",
-        "systemSetting": "系统设置"
+        "merchantCertification": "商家认证",
+        "systemSetting": "系统设置",
+        "addUser": "用户添加"
     },
     "login": {
         "backSignIn": "返回",

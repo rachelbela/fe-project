@@ -181,14 +181,14 @@ const USER_MANAGEMENT = {
   ],
 };
 
-/**用户中心 */
-const USER_CENTER = {
+/**商家认证*/
+const MERCHANT_CERTIFICATION = {
   id: "8132044808088497",
   parentId: "",
-  label: "menu.userCenter",
-  name: "userCenter",
+  label: "menu.merchantCertification",
+  name: "merchantCertification",
   icon: "solar:user-id-line-duotone",
-  route: "/userCenter",
+  route: "/merchantCertification",
 };
 /**系统配置 */
 const SYSTEM_SETTING = {
@@ -230,7 +230,7 @@ const TEST_ROLE = {
   permission: [
     SYSTEM_HOMEPAGE,
     USER_MANAGEMENT,
-    USER_CENTER,
+    MERCHANT_CERTIFICATION,
     COST_CENTER,
     MESSAGE_CENTER,
     DASHBOARD_PERMISSION,
