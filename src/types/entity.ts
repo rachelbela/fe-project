@@ -36,6 +36,7 @@ export interface Permission {
   frameSrc?: URL; // 外链
   badge?: number; // 徽标
   children?: Permission[];
+  hideInMenu?: boolean; // 是否在菜单隐藏
 }
 
 export interface Role {

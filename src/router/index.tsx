@@ -17,6 +17,7 @@ import CostCenter from "@/pages/costCenter";
 import SystemSetting from "@/pages/systemSetting";
 import SystemHomepage from "@/pages/systemHomepage";
 import MessageCenter from "@/pages/messageCenter";
+import AddUser from "@/pages/userManagement/userAdd";
 
 const PUBLIC_ROUTE: RouteObject = {
   path: "/login",
@@ -48,6 +49,10 @@ function Router() {
       {
         path: "/userManagement",
         element: <UserManagement />,
+      },
+      {
+        path: "/userManagement/addUser",
+        element: <AddUser />,
       },
       {
         path: "/userCenter",

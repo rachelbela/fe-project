@@ -168,7 +168,19 @@ const USER_MANAGEMENT = {
   name: "userManagement",
   icon: "solar:user-hand-up-outline",
   route: "/userManagement",
+  children: [
+    {
+      id: "81320448080884961",
+      parentId: "8132044808088496",
+      label: "menu.addUser",
+      name: "addUser",
+      icon: "",
+      route: "/userManagement/addUser",
+      hideInMenu: true,
+    },
+  ],
 };
+
 /**用户中心 */
 const USER_CENTER = {
   id: "8132044808088497",

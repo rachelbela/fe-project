@@ -31,7 +31,7 @@ export function Aside() {
   const tree = (data: Permission[]) => {
     return data.map((item) => {
       if (item.children === undefined) {
-        return (
+        return item.hideInMenu ? null : (
           <div
             data-slot="sidebar-menu-item"
             data-sidebar="menu-item"
@@ -49,7 +49,11 @@ export function Aside() {
           </div>
         );
       } else {
-        return (
+        // 是否有需要展示的子菜单
+        const hideAllSubMenu = item.children?.every(
+          (v) => v.hideInMenu === true
+        );
+        return hideAllSubMenu ? null : (
           <Collapsible className="group/collapsible" key={item.id}>
             <CollapsibleTrigger className="flex space-x-1 items-center w-full">
               <div
